@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button id="btn-execute">Greet</button>
+    <script>
+      const button = document.getElementById("btn-execute")
+
+      button.addEventListener("click", async () => {
+        // Select the first two blocks on the current page
+        const pageResult = await craft.dataApi.getCurrentPage();
+  
+        if (pageResult.status !== "success") {
+          throw new Error(result.message)
+        }
+     
+        const pageBlock = pageResult.data;
+        
+        const blocks = pageBlock.subblocks;
+        const firstBlocks = blocks.slice(0, 2);
+         
+        const selectionResult = await craft.editorApi.selectBlocks(firstBlocks.map(b => b.id));
+        const md =  craft.markdown.craftBlockToMarkdown(blocks, "common", {});
+         
+        const block = craft.blockFactory.textBlock({ 
+          content: md
+        })
+
+        await craft.dataApi.addBlocks([ block ]) 
+
+      })
+    </script>
+  </body>
+</html>

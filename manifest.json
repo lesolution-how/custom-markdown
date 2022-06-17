@@ -1,0 +1,10 @@
+{
+  "id": "how.lesolution.hello",
+  "name": "Hello World",
+  "fileName": "hello-world",
+  "author": "Le Solution",
+  "author-email": "team@lesolution.how",
+  "description" : "Add cell with page content as markdown",
+  "api": "0.1.0",
+  "main": "index.html"
+}
